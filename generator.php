@@ -58,8 +58,8 @@ if(isset($_GET['generate']) AND $_GET['generate'] == "random")
 	{
 
 		$servername = "localhost";
-		$username = "general";
-		$password = "26738?8fy1";
+		$username = "[username]]";
+		$password = "[password]";
 		$dbname = "words";
 
 		// Create connection
@@ -67,22 +67,22 @@ if(isset($_GET['generate']) AND $_GET['generate'] == "random")
 		// Check connection
 		if ($conn->connect_error) {
 			die("Connection failed: " . $conn->connect_error);
-		} 
+		}
 
 		$sql = "SELECT * FROM word";
 		if(isset($_GET['charlength']) AND $_GET['charlength'] > 0){
 			$sql .= " WHERE CHAR_LENGTH(word) < " . $_GET['charlength'];
-		} 
+		}
 		$sql .=" ORDER BY rand() LIMIT 1";
 
 
-		$result = $conn->query($sql); 
-		
+		$result = $conn->query($sql);
+
 		if($result)
 		{
-			$result->data_seek(0); 
+			$result->data_seek(0);
 			$row = $result->fetch_assoc();
-			$conn->close();		
+			$conn->close();
 
 			$domain =  $row['word'];
 		}
@@ -94,7 +94,7 @@ if(isset($_GET['generate']) AND $_GET['generate'] == "random")
 
 	}
 
-	
+
 	// Check result for no-match phrase.
 	$domain_registered_message = "";
 	//$domain = $_POST['domain'];
@@ -129,7 +129,7 @@ if(isset($_GET['generate']) AND $_GET['generate'] == "random")
 			"whois.verisign-grs.com" =>   array("port" => "43","query_begin" => "domain ","query_end" => "\r\n","redirect" => "1","redirect_string" => "Whois Server:","no_match_string" => "No match for domain","encoding" => "iso-8859-1"),
 
 			"whois.nic.io" =>   array("port" => "43","query_begin" => "","query_end" => "\r\n","redirect" => "0","redirect_string" => "","no_match_string" => "is available for purchase","match_string" => "Status :  Live","encoding" => "iso-8859-1"),
-			
+
 			"whois.nic.co" =>   array("port" => "43","query_begin" => "","query_end" => "\r\n","redirect" => "0","redirect_string" => "","no_match_string" => "Not found","match_string" => "Domain ID:","encoding" => "iso-8859-1")
 
 
@@ -154,7 +154,7 @@ if(isset($_GET['generate']) AND $_GET['generate'] == "random")
 
 
 
-			
+
 
 			if(!$fp)
 			{
@@ -216,7 +216,7 @@ if(isset($_GET['generate']) AND $_GET['generate'] == "random")
 			}
 
 		}
-	
+
 	}
 
 }
