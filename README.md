@@ -1,1 +1,1 @@
-#whois script to choose ranom noun and verb and check against DNS servers
+#whois script to choose random noun and verb and check against DNS servers
