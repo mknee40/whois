@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link href='//fonts.googleapis.com/css?family=Varela Round' rel='stylesheet'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <i class="phone_android"></i>
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Varela Round", sans-serif}
@@ -93,18 +93,13 @@ body, html, {
  <div class="container" style="min-height:600px;">
 
         <div class="row">
-            <div class="col-lg-12 text-center">
+            <div class="col-lg-9 text-center">
 
-                <h1><?=_('Domain Name Generator') ?></h1>
+                <h1><?php_('Domain Name Generator') ?></h1>
 
-                <h3 id="domain-to-search"></h3>
+                <h3 id="domain-to-search">Enter a domain name to search</h3>
 
-                <p>
-                Use the FlippinMadness domain name generator to search for a domain name to buy.
-                </p><p>This service is in beta version and may have a delay loading results.
-                </p>
-
-                <input type="text" id="domain-search" value="" placeholder="Enter a search term or blank for random">&nbsp;
+                <input style="width:100%;padding:0.5em;"  type="text" id="domain-search" value="" placeholder="Enter a search term or blank for random">&nbsp;
                 <select name="charlength" id="charlength" class="form-control">
                 <option value="0" selected>--- select max char length ---</option>
                 <?php for($l=5;$l<105;$l+=5) :?>
@@ -146,7 +141,7 @@ body, html, {
 
             $("#generate").click(function(){
                 $("#tr-append-domains").html("<tr><td>loading results, please wait....</td></tr>");
-                $.getJSON("domaingenerator.php?generate=random&search=" + escape($("#domain-search").val()) + "&charlength=" + $("#charlength").val(),function(result){
+                $.getJSON("generator.php?generate=random&search=" + escape($("#domain-search").val()) + "&charlength=" + $("#charlength").val(),function(result){
                     var html = '';
                     $.each(result, function(key, val){
                         var splitval = val.split("|");
@@ -193,3 +188,6 @@ http://www.namejet.com/download/StandardAuctions.csv
 
 */
 ?>
+
+</body>
+</html>

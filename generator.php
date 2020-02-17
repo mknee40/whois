@@ -56,42 +56,15 @@ if(isset($_GET['generate']) AND $_GET['generate'] == "random")
 	}
 	else
 	{
+		$nouns = file("nouns.txt");
+		$nouns = $nouns[array_rand($nouns)];
 
-		$servername = "localhost";
-		$username = "[username]]";
-		$password = "[password]";
-		$dbname = "words";
+		$verbs = file("verbs.txt");
+		$verbs = $verbs[array_rand($verbs)];
 
-		// Create connection
-		$conn = new mysqli($servername, $username, $password, $dbname);
-		// Check connection
-		if ($conn->connect_error) {
-			die("Connection failed: " . $conn->connect_error);
-		}
-
-		$sql = "SELECT * FROM word";
-		if(isset($_GET['charlength']) AND $_GET['charlength'] > 0){
-			$sql .= " WHERE CHAR_LENGTH(word) < " . $_GET['charlength'];
-		}
-		$sql .=" ORDER BY rand() LIMIT 1";
-
-
-		$result = $conn->query($sql);
-
-		if($result)
-		{
-			$result->data_seek(0);
-			$row = $result->fetch_assoc();
-			$conn->close();
-
-			$domain =  $row['word'];
-		}
-		else
-		{
-			exit("Error: 16980");
-		}
-
-
+		//exit(trim($nouns) . "----" . trim($verbs));
+		
+		$domain = trim($nouns) . trim($verbs);
 	}
 
 
